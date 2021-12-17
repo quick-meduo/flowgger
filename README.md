@@ -23,4 +23,16 @@ as well as multiple input formats: JSON (GELF), LTSV, Cap'n Proto and
 RFC5424. Normalized messages can be sent to Kafka, Graylog, to downstream
 Flowgger servers, or to other log collectors for further processing.
 
+# Static linkage
+1.  Check pkg-config installaton
+    > which pkg-config
+2.  Set enviroments as
+   -  export OPENSSL\_INCLUDE\_DIR=/usr/local/include
+   -  export OPENSSL\_LIB\_DIR=/usr/local/lib
+   -  export OPENSSL\_STATIC=yes
+   -  export PKG_CONFIG=/usr/bin/pkg-config
+3. Compile with
+   - RUSTFLAGS="-C target-feature=+crt-static" cargo build --release --frozen --offline
+
+
 # [Jump to the Flowgger documentation](https://github.com/awslabs/flowgger/wiki)
